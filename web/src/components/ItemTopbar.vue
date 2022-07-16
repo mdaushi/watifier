@@ -1,5 +1,5 @@
 <script setup>
-    defineProps(['title', 'to'])
+defineProps(["title", "to"]);
 </script>
 
 <template>
@@ -9,7 +9,7 @@
         ><!-- Download SVG icon from http://tabler-icons.io/i/home -->
         <slot name="icon"></slot>
       </span>
-      <span class="nav-link-title"> {{title}} </span>
+      <span class="nav-link-title"> {{ title }} </span>
     </a>
   </li>
 </template>

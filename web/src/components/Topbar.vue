@@ -58,3 +58,8 @@ import Search from "./Search.vue";
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: "TopbarComponent",
+};
+</script>
