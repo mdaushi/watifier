@@ -1,6 +1,7 @@
 <script setup>
 import ItemTopbar from "./ItemTopbar.vue";
 import Search from "./Search.vue";
+import ItemDropdownTopbar from "./ItemDropdownTopbar.vue";
 </script>
 
 <template>
@@ -51,6 +52,13 @@ import Search from "./Search.vue";
                 </svg>
               </template>
             </ItemTopbar>
+            <ItemDropdownTopbar title="Messages">
+              <template #item-dropdown>
+                <a class="dropdown-item" href="/messages/text">
+                  Message Text
+                </a>
+              </template>
+            </ItemDropdownTopbar>
           </ul>
           <Search />
         </div>
