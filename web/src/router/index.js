@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import DevicesView from "../views/DevicesView.vue";
-import MessagesTextView from "../views/MessagesTextView.vue"
+import MessagesTextView from "../views/MessagesTextView.vue";
+import MessagesImageView from "../views/MessagesImageView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,9 +23,14 @@ const router = createRouter({
     },
     {
       path: "/messages/text",
-      name: 'messageText',
+      name: "messageText",
       component: MessagesTextView,
-    }
+    },
+    {
+      path: "/messages/image",
+      name: "messageImage",
+      component: MessagesImageView,
+    },
   ],
 });
 

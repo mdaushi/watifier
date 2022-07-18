@@ -57,6 +57,9 @@ import ItemDropdownTopbar from "./ItemDropdownTopbar.vue";
                 <a class="dropdown-item" href="/messages/text">
                   Message Text
                 </a>
+                <a class="dropdown-item" href="/messages/image">
+                  Message Image
+                </a>
               </template>
             </ItemDropdownTopbar>
           </ul>
