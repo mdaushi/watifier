@@ -21,7 +21,7 @@ export default {
           },
         },
         devices: [],
-        scanning_success: false
+        scanning_success: false,
       },
     };
   },
@@ -30,17 +30,17 @@ export default {
   },
   methods: {
     createDevice() {
-      this.data.getSession.message = 'Generate Qrcode, mohon tunggu...'
+      this.data.getSession.message = "Generate Qrcode, mohon tunggu...";
       HTTP.post("sessions/add", {
         id: this.input.id,
         isLegacy: false,
       })
         .then((response) => {
           this.data.getSession = response.data;
-          this.verifyScan()
+          this.verifyScan();
         })
         .catch((e) => {
-          this.data.getSession.message = 'Generate Qrcode gagal...'
+          this.data.getSession.message = "Generate Qrcode gagal...";
           console.log(e);
         });
     },
@@ -59,30 +59,31 @@ export default {
           console.log(e);
         });
     },
-    verifyScan(){
+    verifyScan() {
       var verify = setInterval(() => {
-        HTTP.get('sessions/status/' + this.input.id)
-          .then(response => {
-            if(response.data.data.status == 'authenticated'){
+        HTTP.get("sessions/status/" + this.input.id)
+          .then((response) => {
+            if (response.data.data.status == "authenticated") {
               // stop interval
-              clearInterval(verify)
+              clearInterval(verify);
               // close modal n clear data
-              document.getElementById('closeModal').click();
-              this.data.getSession.message = null
-              this.data.getSession.data.qr = null
-              this.input = {}
+              document.getElementById("closeModal").click();
+              this.data.getSession.message = null;
+              this.data.getSession.data.qr = null;
+              this.input = {};
 
-              this.getDevices()
+              this.getDevices();
             }
           })
-          .catch(err => {
-            clearInterval(verify)
-            this.data.getSession.message = 'Tidak ada device yang terhubung, silahkan coba lagi...'
-            this.data.getSession.data.qr = null
-            this.input = {}
-          })
+          .catch((err) => {
+            clearInterval(verify);
+            this.data.getSession.message =
+              "Tidak ada device yang terhubung, " + err;
+            this.data.getSession.data.qr = null;
+            this.input = {};
+          });
       }, 3000);
-    }
+    },
   },
 };
 </script>
@@ -139,11 +140,11 @@ export default {
           <div class="row row-cards">
             <div v-if="data.devices.length > 0">
               <CardActions
-              v-for="(device, index) in data.devices"
-              :key="index"
-              :title="device.name"
-              :type="device.type"
-            />
+                v-for="(device, index) in data.devices"
+                :key="index"
+                :title="device.name"
+                :type="device.type"
+              />
             </div>
             <div class="empty" v-else>
               <div class="empty-img">
@@ -158,7 +159,6 @@ export default {
                 Silahkan tambah device terlebih dahulu
               </p>
             </div>
-            
           </div>
         </div>
       </div>
@@ -183,7 +183,12 @@ export default {
         </div>
       </template>
       <template #footer>
-        <a href="#" class="btn btn-link link-secondary" id="closeModal" data-bs-dismiss="modal">
+        <a
+          href="#"
+          class="btn btn-link link-secondary"
+          id="closeModal"
+          data-bs-dismiss="modal"
+        >
           Cancel
         </a>
         <button @click="createDevice()" class="btn btn-primary ms-auto">

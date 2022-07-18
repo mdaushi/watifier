@@ -33,36 +33,36 @@ export default {
           console.log(e);
         });
     },
-    sendMessages(){
-        HTTP.post("chats/send?id=" + this.input.sender, {
-            receiver: this.input.receiver, 
-            message: {
-                text: this.input.message
-            }
+    sendMessages() {
+      HTTP.post("chats/send?id=" + this.input.sender, {
+        receiver: this.input.receiver,
+        message: {
+          text: this.input.message,
+        },
+      })
+        .then((response) => {
+          this.$swal({
+            position: "top-end",
+            icon: "success",
+            title: response.data.message,
+            showConfirmButton: false,
+            timer: 3000,
+            toast: true,
+          });
+          this.input = {};
         })
-        .then(response => {
-            this.$swal({
-                position: 'top-end',
-                icon: 'success',
-                title: response.data.message,
-                showConfirmButton: false,
-                timer: 3000,
-                toast: true
-            });
-            this.input = {}
-        })
-        .catch(err => {
-            this.$swal({
-                position: 'top-end',
-                icon: 'error',
-                title: err.data.message,
-                showConfirmButton: false,
-                timer: 3000,
-                toast: true
-            });
-            this.input = {}
-        })
-    }
+        .catch((err) => {
+          this.$swal({
+            position: "top-end",
+            icon: "error",
+            title: err,
+            showConfirmButton: false,
+            timer: 3000,
+            toast: true,
+          });
+          this.input = {};
+        });
+    },
   },
 };
 </script>
@@ -101,7 +101,8 @@ export default {
                         <option
                           v-for="(device, index) in data.devices"
                           :key="index"
-                          :value="device.name">
+                          :value="device.name"
+                        >
                           {{ device.name }}
                         </option>
                       </select>
@@ -136,7 +137,10 @@ export default {
               </div>
               <div class="card-footer text-end">
                 <div class="d-flex">
-                  <button @click="sendMessages()" class="btn btn-primary ms-auto">
+                  <button
+                    @click="sendMessages()"
+                    class="btn btn-primary ms-auto"
+                  >
                     Send message
                   </button>
                 </div>
