@@ -137,28 +137,26 @@ export default {
     <div class="page-body">
       <div class="container-xl">
         <div class="col-12">
-          <div class="row row-cards">
-            <div v-if="data.devices.length > 0">
-              <CardActions
-                v-for="(device, index) in data.devices"
-                :key="index"
-                :title="device.name"
-                :type="device.type"
+          <div class="row row-cards" v-if="data.devices.length > 0">
+            <CardActions
+              v-for="(device, index) in data.devices"
+              :key="index"
+              :title="device.name"
+              :type="device.type"
+            />
+          </div>
+          <div class="empty" v-else>
+            <div class="empty-img">
+              <img
+                src="@/assets/undraw_printing_invoices_5r4r.svg"
+                height="128"
+                alt=""
               />
             </div>
-            <div class="empty" v-else>
-              <div class="empty-img">
-                <img
-                  src="@/assets/undraw_printing_invoices_5r4r.svg"
-                  height="128"
-                  alt=""
-                />
-              </div>
-              <p class="empty-title">Belum ada device yang terhubung</p>
-              <p class="empty-subtitle text-muted">
-                Silahkan tambah device terlebih dahulu
-              </p>
-            </div>
+            <p class="empty-title">Belum ada device yang terhubung</p>
+            <p class="empty-subtitle text-muted">
+              Silahkan tambah device terlebih dahulu
+            </p>
           </div>
         </div>
       </div>
