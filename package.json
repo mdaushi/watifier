@@ -5,13 +5,10 @@
   "author": "Muhammad Firdaus",
   "license": "ISC",
   "private": true,
-  "scripts": {
-    "web": "yarn --cwd web build",
-    "start": "yarn --cwd api start"
-  },
   "workspaces": [
-    "web",
-    "api"
+    "packages/*"
   ],
-  "dependencies": {}
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
 }
