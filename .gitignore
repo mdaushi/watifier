@@ -1,3 +1,5 @@
 node_modules
 .env
 api/README.md
+db_auth.json
+yarn.lock
